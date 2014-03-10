@@ -45,5 +45,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'htmlentities'
-gem 'assignment_rss', :path => '../gems/assignment_rss'
-# gem 'simple-rss'
+gem 'assignment_rss', :git => 'git://github.com/tobiasstrebitzer/assignment_rss.git'
+# gem 'assignment_rss', :path => '../gems/assignment_rss'

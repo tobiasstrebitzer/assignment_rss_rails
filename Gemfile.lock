@@ -1,5 +1,6 @@
-PATH
-  remote: ../gems/assignment_rss
+GIT
+  remote: git://github.com/tobiasstrebitzer/assignment_rss.git
+  revision: f70fe1fd42c70dff3608a7bcd44f71559be7132b
   specs:
     assignment_rss (0.1.0)
       simple-rss
