@@ -1,0 +1,62 @@
+<h1>Feed: <%= @feed.title %></h1>
+
+<div class="row">
+    <div class="col-sm-8">
+        <h2>Entries:</h2>
+        <% @feed.rss_feed_entries.each do |entry| %>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="pull-right">
+                        <% if entry.author and not entry.author.empty? %>
+                            Written by <i><%= entry.author %></i> 
+                        <% end %>
+                        <% if entry.rss_updated and not entry.rss_updated.empty? %>
+                            on <%= entry.rss_updated.to_date %>
+                        <% end %>
+                    </span>
+                    <h3 class="panel-title"><%= entry.title.html_safe %></h3>
+                </div>
+                <div class="panel-body">
+                    <% if entry.content and not entry.content.empty? %>
+                        <%= entry.content.html_safe %>
+                        <hr />
+                    <% end %>
+                    <% if entry.link and not entry.link.empty? %>
+                        <a href="<%= entry.link %>" target="_blank" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-link"></span>&nbsp;Read full article</a>
+                    <% end %>
+                </div>
+            </div>    
+        <% end %>
+    </div>
+    <div class="col-sm-4">
+        <h2>Info:</h2>
+        <table class="table">
+            <tbody>
+                <% if @feed.feed_id %>
+                    <tr>
+                        <td>ID:</td>
+                        <td><%= @feed.feed_id %></td>
+                    </tr>
+                <% end %>
+                <tr>
+                    <td>Title:</td>
+                    <td><%= @feed.title %></td>
+                </tr>
+                <tr>
+                    <td>Link:</td>
+                    <td><a href="<%= @feed.link %>" target="_blank"><%= @feed.link %></a></td>
+                </tr>
+                <% if @feed.rss_updated %>
+                    <tr>
+                        <td>Last Updated:</td>
+                        <td><%= @feed.rss_updated.to_date %></td>
+                    </tr>
+                <% end %>
+                <tr>
+                    <td>Last Fetch:</td>
+                    <td><%= time_ago_in_words(@feed.updated_at) %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

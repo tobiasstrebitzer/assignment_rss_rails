@@ -1,0 +1,15 @@
+<h1>Parse RSS Feed</h1>
+
+<%= form_tag("/rss", method: "post") do %>
+    <div class="form-group">
+        <%= label_tag(:rss_url, "Wordpress RSS url:") %>
+        <%= text_field_tag(:rss_url, '', { placeholder: 'http://weblog.rubyonrails.org/feed/atom.xml', size: 48, class: 'form-control' }) %>      
+    </div>
+    <% if defined?(@error) %>
+        <div class='alert alert-danger'>
+            <p><%= @error %></p>
+        </div>
+    <% end %>
+
+    <p><%= submit_tag("Fetch RSS Feed", class: 'btn btn-primary') %></p>
+<% end %>
